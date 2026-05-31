@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm --prefix frontend run dev\" \"npm --prefix backend run dev\"",
     "frontend": "npm --prefix frontend run dev",
     "backend": "npm --prefix backend run dev",
-    "build": "npm --prefix frontend run build && npm --prefix backend run build",
+    "build": "npm --prefix frontend run build ",
     "start": "concurrently \"npm --prefix frontend start\" \"npm --prefix backend start\"",
     "install-all": "npm install && npm --prefix frontend install && npm --prefix backend install"
   },
