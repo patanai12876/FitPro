@@ -1,0 +1,24 @@
+{
+  "name": "gym-website",
+  "version": "1.0.0",
+  "description": "Full-stack gym website with Next.js frontend and Express.js backend",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm --prefix frontend run dev\" \"npm --prefix backend run dev\"",
+    "frontend": "npm --prefix frontend run dev",
+    "backend": "npm --prefix backend run dev",
+    "build": "npm --prefix frontend run build && npm --prefix backend run build",
+    "start": "concurrently \"npm --prefix frontend start\" \"npm --prefix backend start\"",
+    "install-all": "npm install && npm --prefix frontend install && npm --prefix backend install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  },
+  "dependencies": {
+    "mongodb": "^7.2.0"
+  }
+}

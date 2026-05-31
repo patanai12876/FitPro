@@ -1,0 +1,80 @@
+# ⚡ QUICK START - ONE PAGE
+
+## 🟢 START
+
+```
+Double-click: START_APP.bat
+Wait 10 seconds
+Go to: http://localhost:3000
+```
+
+---
+
+## ✅ WORKING?
+
+Check these 3 windows:
+
+| Window | Should Show |
+|--------|------------|
+| **Backend** (Dark) | ✅ MongoDB Connected |
+| **Frontend** (Dark) | ✓ Ready |
+| **Browser** | Website visible + content loads |
+
+---
+
+## ❌ NOT WORKING? FIXES
+
+| Error | Fix |
+|-------|-----|
+| "Port already in use" | Close terminals, run `START_APP.bat` again |
+| Website shows 404 | Close terminals, run `START_APP.bat` again |
+| Blank page / no data | Wait 20 seconds, refresh browser (F5) |
+| Can't see plans/services | Backend not connected to database |
+| Form won't submit | Same as above |
+| Website very slow | Close Chrome, heavy apps, try again |
+
+---
+
+## 🔥 NUCLEAR OPTION (Fixes Everything)
+
+```bash
+taskkill /F /IM node.exe
+```
+Then: Run `START_APP.bat` again
+
+---
+
+## 📍 WHERE TO FIND THINGS
+
+```
+Website:     http://localhost:3000
+Backend:     http://localhost:5000/api
+Health:      http://localhost:5000/health
+```
+
+---
+
+## 📧 GETTING HELP
+
+**Screenshot this + send to support:**
+- Error message from terminal
+- What page you were on
+- What you clicked
+
+---
+
+## 🎯 SIMPLE RULES
+
+✅ DO:
+- Run `START_APP.bat` to start
+- Press Ctrl+C to stop
+- Refresh browser if stuck (F5)
+
+❌ DON'T:
+- Don't close terminals while working
+- Don't run START_APP.bat twice
+- Don't skip the 10-second wait
+
+---
+
+Done! 🎉

@@ -1,0 +1,53 @@
+# ignore node modules
+node_modules/
+.npm
+.eslintcache
+
+# ignore environment variables
+.env
+.env.local
+.env.*.local
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Database
+dump.rdb
+*.sqlite
+*.sqlite3
+
+# OS
+Thumbs.db
+.DS_Store
+
+# uploads
+uploads/
+
+# other
+*.pid
+*.seed
+*.pid.lock
+.turbo/
