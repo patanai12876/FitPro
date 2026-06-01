@@ -18,7 +18,9 @@ export default function AdminInquiries() {
   useEffect(() => {
     const fetchInquiries = async () => {
       try {
-        const loginRes = await fetch('http://localhost:5000/api/auth/login', {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+        
+        const loginRes = await fetch(`${apiUrl}/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -35,22 +37,24 @@ export default function AdminInquiries() {
           return;
         }
 
-        const statsRes = await fetch(
-          'http://localhost:5000/api/inquiries/stats/dashboard',
-          { headers: { Authorization: `Bearer ${loginData.token}` } }
-        );
-
-        const statsData = await statsRes.json();
-        setStats(statsData.data);
-
         const inquiriesRes = await fetch(
-          'http://localhost:5000/api/inquiries?page=1&limit=50',
+          `${apiUrl}/inquiries?page=1&limit=50`,
           { headers: { Authorization: `Bearer ${loginData.token}` } }
         );
 
         const inquiriesData = await inquiriesRes.json();
         setInquiries(inquiriesData.data || []);
+        
+        // Calculate stats from inquiries
+        const total = inquiriesData.pagination?.total || inquiriesData.data?.length || 0;
+        setStats({
+          total: total,
+          new: inquiriesData.data?.filter(i => i.status === 'new').length || 0,
+          pending: inquiriesData.data?.filter(i => i.status === 'pending').length || 0,
+          resolved: inquiriesData.data?.filter(i => i.status === 'resolved').length || 0,
+        });
       } catch (err) {
+        console.error('Error:', err);
         setError('Failed to fetch inquiries');
       } finally {
         setLoading(false);
