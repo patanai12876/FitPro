@@ -6,6 +6,57 @@ import ServiceCard from '@/components/ServiceCard';
 import PageHeader from '@/components/PageHeader';
 import { FaSearch, FaFilter, FaArrowRight, FaStar } from 'react-icons/fa';
 
+const demoServices = [
+  {
+    _id: '1',
+    name: 'Personal Training',
+    category: 'strength',
+    description: 'One-on-one personalized training sessions with certified trainers',
+    image: '/images/services/personal-training.jpg',
+    price: '$50/hour',
+  },
+  {
+    _id: '2',
+    name: 'Cardio Classes',
+    category: 'cardio',
+    description: 'High-energy cardio workouts to build endurance and burn calories',
+    image: '/images/services/cardio.jpg',
+    price: '$15/class',
+  },
+  {
+    _id: '3',
+    name: 'Yoga & Flexibility',
+    category: 'flexibility',
+    description: 'Improve flexibility and reduce stress with guided yoga sessions',
+    image: '/images/services/yoga.jpg',
+    price: '$20/class',
+  },
+  {
+    _id: '4',
+    name: 'Group Fitness Classes',
+    category: 'group classes',
+    description: 'Fun and motivating group workouts with friends and community',
+    image: '/images/services/group-fitness.jpg',
+    price: '$12/class',
+  },
+  {
+    _id: '5',
+    name: 'Recovery & Massage',
+    category: 'recovery',
+    description: 'Professional massage therapy and recovery sessions',
+    image: '/images/services/massage.jpg',
+    price: '$60/session',
+  },
+  {
+    _id: '6',
+    name: 'Nutrition Counseling',
+    category: 'nutrition',
+    description: 'Expert nutrition guidance for optimal fitness results',
+    image: '/images/services/nutrition.jpg',
+    price: '$40/consultation',
+  },
+];
+
 export default function ServicesPage() {
   const [services, setServices] = useState([]);
   const [filtered, setFiltered] = useState([]);
