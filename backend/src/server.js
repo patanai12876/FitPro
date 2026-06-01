@@ -21,9 +21,17 @@ connectDB();
 
 // Security Middleware
 app.use(helmet());
+const allowedOrigin = process.env.CORS_ORIGIN?.replace(/\/$/, ''); // Remove trailing slash
 app.use(cors({
-  origin: '*', // Allow all origins for now
-  credentials: false
+  origin: (origin, callback) => {
+    const normalizedOrigin = origin?.replace(/\/$/, ''); // Normalize incoming origin
+    if (!normalizedOrigin || normalizedOrigin === allowedOrigin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
 
 // Rate Limiting

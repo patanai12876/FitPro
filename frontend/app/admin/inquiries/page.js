@@ -30,9 +30,10 @@ export default function AdminInquiries() {
         });
 
         const loginData = await loginRes.json();
+        console.log('Login response:', loginData);
 
-        if (!loginData.token) {
-          setError('Authentication failed');
+        if (!loginData.success || !loginData.token) {
+          setError(`Authentication failed: ${loginData.message || 'No token received'}`);
           setLoading(false);
           return;
         }
@@ -54,8 +55,8 @@ export default function AdminInquiries() {
           resolved: inquiriesData.data?.filter(i => i.status === 'resolved').length || 0,
         });
       } catch (err) {
-        console.error('Error:', err);
-        setError('Failed to fetch inquiries');
+        console.error('Error fetching inquiries:', err);
+        setError(`Error: ${err.message}`);
       } finally {
         setLoading(false);
       }
