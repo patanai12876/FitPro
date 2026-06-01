@@ -27,8 +27,7 @@ async function addPlans() {
           'Mobile app access',
           'Community forum',
           'Monthly fitness tips',
-          'Beginner workout guides',
-          '7-day free trial'
+          'Beginner workout guides'
         ],
         trialDays: 7,
         discount: 0,
@@ -47,8 +46,7 @@ async function addPlans() {
           '2 personal training sessions/month',
           'Nutrition guidance',
           'Priority booking',
-          'Mobile app + wearable sync',
-          'Member exclusive events'
+          'Mobile app + wearable sync'
         ],
         trialDays: 14,
         discount: 10,
@@ -67,8 +65,7 @@ async function addPlans() {
           'Nutritionist consultation (monthly)',
           'Recovery & massage therapy (2x/month)',
           'Guest privileges (2 guests/month)',
-          'Premium locker access',
-          'Exclusive member events'
+          'Premium locker access'
         ],
         trialDays: 14,
         discount: 20,
@@ -87,8 +84,7 @@ async function addPlans() {
           'Quarterly fitness assessments',
           'Custom annual training plan',
           'Priority equipment reservation',
-          'Exclusive member merchandise',
-          'Birthday month 50% off services'
+          'Exclusive member merchandise'
         ],
         trialDays: 14,
         discount: 33,

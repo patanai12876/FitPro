@@ -12,7 +12,7 @@ export default function PlanCard({ plan, isSelected, onSelect }) {
   return (
     <div 
       onClick={handleCardClick}
-      className={`group relative rounded-3xl overflow-hidden h-full min-h-[700px] flex flex-col transition-all duration-500 cursor-pointer transform ${
+      className={`group relative rounded-3xl overflow-hidden h-full min-h-[650px] flex flex-col transition-all duration-500 cursor-pointer transform ${
         isSelected?._id === plan._id 
           ? 'ring-4 ring-maroon shadow-2xl scale-105 -translate-y-4' 
           : 'border-2 border-maroon/20 shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:border-maroon'
@@ -87,8 +87,8 @@ export default function PlanCard({ plan, isSelected, onSelect }) {
           }`}>
             What's Included:
           </p>
-          <ul className="space-y-3 max-h-[240px] overflow-y-auto pr-2">
-            {plan.features && plan.features.slice(0, 8).map((feature, idx) => (
+          <ul className="space-y-2.5">
+            {plan.features && plan.features.slice(0, 7).map((feature, idx) => (
               <li 
                 key={idx} 
                 className={`flex items-start gap-3 text-sm transition-all duration-300 ${

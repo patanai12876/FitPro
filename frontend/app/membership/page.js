@@ -76,21 +76,12 @@ export default function MembershipPage() {
               <div className="w-14 h-14 border-4 border-maroon/20 border-t-maroon rounded-full animate-spin"></div>
             </div>
           ) : plans.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {plans.map((plan, index) => (
                 <div
                   key={plan._id}
-                  className={`relative transition-all duration-300 ${
-                    index === 1 ? 'md:scale-105' : ''
-                  }`}
+                  className="relative transition-all duration-300"
                 >
-                  {index === 1 && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                      <div className="bg-maroon text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                        Popular
-                      </div>
-                    </div>
-                  )}
                   <PlanCard 
                     key={plan._id} 
                     plan={plan} 
