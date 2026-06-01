@@ -16,6 +16,9 @@ dotenv.config();
 
 const app = express();
 
+// Trust Railway's proxy so express-rate-limit can read X-Forwarded-For correctly
+app.set('trust proxy', 1);
+
 // Connect to Database
 connectDB();
 
@@ -30,7 +33,8 @@ app.use(cors({
 const limiter = rateLimit({
   windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 900000,
   max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 100,
-  message: 'Too many requests from this IP, please try again later.'
+  message: 'Too many requests from this IP, please try again later.',
+  skip: (req) => !req.ip
 });
 app.use(limiter);
 
