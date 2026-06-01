@@ -25,7 +25,10 @@ async function addPlans() {
           'Basic equipment access',
           'Locker room & facilities',
           'Mobile app access',
-          'Community forum'
+          'Community forum',
+          'Monthly fitness tips',
+          'Beginner workout guides',
+          '7-day free trial'
         ],
         trialDays: 7,
         discount: 0,
@@ -61,14 +64,11 @@ async function addPlans() {
           'Unlimited 24/7 gym access',
           'Unlimited group classes & workshops',
           'Unlimited personal training sessions',
-          'Sport-specific training programs',
           'Nutritionist consultation (monthly)',
           'Recovery & massage therapy (2x/month)',
           'Guest privileges (2 guests/month)',
           'Premium locker access',
-          'VIP priority support',
-          'Exclusive member events & retreat',
-          'Advanced fitness analytics'
+          'Exclusive member events'
         ],
         trialDays: 14,
         discount: 20,
@@ -88,9 +88,7 @@ async function addPlans() {
           'Custom annual training plan',
           'Priority equipment reservation',
           'Exclusive member merchandise',
-          'Free smoothies (1x/week)',
-          'Birthday month 50% off services',
-          '24/7 member support'
+          'Birthday month 50% off services'
         ],
         trialDays: 14,
         discount: 33,
