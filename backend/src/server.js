@@ -22,7 +22,15 @@ connectDB();
 // Security Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN ,
+  origin: (origin, callback) => {
+    const allowedOrigin = process.env.CORS_ORIGIN;
+    // Allow both with and without trailing slash
+    if (!origin || origin === allowedOrigin || origin === `${allowedOrigin}/`) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
