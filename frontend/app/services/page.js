@@ -6,6 +6,15 @@ import ServiceCard from '@/components/ServiceCard';
 import PageHeader from '@/components/PageHeader';
 import { FaSearch, FaFilter, FaArrowRight, FaStar } from 'react-icons/fa';
 
+const demoServices = [
+  { _id: '1', name: 'Personal Training Sessions', category: 'strength', description: 'One-on-one training with certified professionals', price: 50, rating: 5 },
+  { _id: '2', name: 'Cardio & HIIT Classes', category: 'cardio', description: 'High-intensity interval training and cardio workouts', price: 20, rating: 4.8 },
+  { _id: '3', name: 'Yoga & Flexibility Training', category: 'flexibility', description: 'Improve flexibility and reduce stress', price: 25, rating: 4.9 },
+  { _id: '4', name: 'Group Fitness Classes', category: 'group classes', description: 'Fun and motivating group workouts', price: 15, rating: 4.7 },
+  { _id: '5', name: 'Recovery & Massage Therapy', category: 'recovery', description: 'Professional massage therapy and recovery sessions', price: 60, rating: 5 },
+  { _id: '6', name: 'Strength Training Program', category: 'strength', description: 'Comprehensive strength training program', price: 45, rating: 4.8 },
+];
+
 export default function ServicesPage() {
   const [services, setServices] = useState([]);
   const [filtered, setFiltered] = useState([]);
