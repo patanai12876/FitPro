@@ -4,34 +4,47 @@ import { useState, useEffect } from 'react';
 import PlanCard from '@/components/PlanCard';
 import PageHeader from '@/components/PageHeader';
 
+const hardcodedPlans = [
+  {
+    _id: 'plan-1',
+    name: 'Starter Plan',
+    price: 49,
+    duration: 30,
+    description: 'Perfect for beginners who want to start their fitness journey with guided support.',
+    features: ['Unlimited gym access', '1 personal training session', 'Basic nutrition plan'],
+    trialDays: 7,
+    discount: 10,
+  },
+  {
+    _id: 'plan-2',
+    name: 'Pro Plan',
+    price: 79,
+    duration: 90,
+    description: 'Ideal for regular gym-goers looking to build strength and improve endurance.',
+    features: ['Unlimited gym access', 'Weekly coaching', 'Custom workout plan', 'Nutrition tracking'],
+    trialDays: 7,
+    discount: 15,
+  },
+  {
+    _id: 'plan-3',
+    name: 'Elite Plan',
+    price: 119,
+    duration: 180,
+    description: 'For fitness enthusiasts who want premium coaching and advanced progress tracking.',
+    features: ['Unlimited gym access', 'Personal trainer', 'Advanced nutrition plan', 'Recovery sessions'],
+    trialDays: 7,
+    discount: 20,
+  },
+];
+
 export default function MembershipPage() {
-  const [plans, setPlans] = useState([]);
+  const [plans, setPlans] = useState(hardcodedPlans);
   const [selectedPlan, setSelectedPlan] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchPlans();
+    setPlans(hardcodedPlans);
   }, []);
-
-  const fetchPlans = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/plans`
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      setPlans(data.data || []);
-    } catch (error) {
-      console.error('Failed to fetch plans:', error);
-      setPlans([]); // Ensure plans is empty on error
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handlePlanSelect = (plan) => {
     // Toggle selection - if clicking the same plan, deselect it
@@ -76,7 +89,7 @@ export default function MembershipPage() {
               <div className="w-14 h-14 border-4 border-maroon/20 border-t-maroon rounded-full animate-spin"></div>
             </div>
           ) : plans.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {plans.map((plan, index) => (
                 <div
                   key={plan._id}
@@ -86,6 +99,7 @@ export default function MembershipPage() {
                     key={plan._id} 
                     plan={plan} 
                     isSelected={selectedPlan?._id === plan._id}
+                    highlighted={index === 1}
                     onSelect={handlePlanSelect}
                   />
                 </div>

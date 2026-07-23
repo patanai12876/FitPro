@@ -21,17 +21,23 @@ connectDB();
 
 // Security Middleware
 app.use(helmet());
-const allowedOrigin = process.env.CORS_ORIGIN?.replace(/\/$/, ''); // Remove trailing slash
+const allowedOrigins = [
+  process.env.CORS_ORIGIN?.replace(/\/$/, ''),
+  ...(process.env.NODE_ENV !== 'production'
+    ? ['http://localhost:3000', 'http://127.0.0.1:3000']
+    : []),
+].filter(Boolean);
+
 app.use(cors({
   origin: (origin, callback) => {
-    const normalizedOrigin = origin?.replace(/\/$/, ''); // Normalize incoming origin
-    if (!normalizedOrigin || normalizedOrigin === allowedOrigin) {
+    const normalizedOrigin = origin?.replace(/\/$/, '');
+    if (!normalizedOrigin || allowedOrigins.includes(normalizedOrigin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true
+  credentials: true,
 }));
 
 // Rate Limiting

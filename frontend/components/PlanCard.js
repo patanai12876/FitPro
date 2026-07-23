@@ -1,4 +1,4 @@
-export default function PlanCard({ plan, isSelected, onSelect }) {
+export default function PlanCard({ plan, isSelected, onSelect, highlighted }) {
   const handleCardClick = () => {
     onSelect(plan._id === isSelected?._id ? null : plan);
   };
@@ -15,7 +15,9 @@ export default function PlanCard({ plan, isSelected, onSelect }) {
       className={`group relative rounded-3xl overflow-hidden h-full min-h-[650px] flex flex-col transition-all duration-500 cursor-pointer transform ${
         isSelected?._id === plan._id 
           ? 'ring-4 ring-maroon shadow-2xl scale-105 -translate-y-4' 
-          : 'border-2 border-maroon/20 shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:border-maroon'
+          : highlighted
+            ? 'border-2 border-maroon/40 shadow-2xl scale-[1.02] -translate-y-2'
+            : 'border-2 border-maroon/20 shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:border-maroon'
       }`}
     >
       {/* Background Gradient */}
@@ -36,6 +38,13 @@ export default function PlanCard({ plan, isSelected, onSelect }) {
           <div className="mb-4 inline-flex items-center gap-2 w-fit">
             <span className="bg-white/20 backdrop-blur-md text-white px-4 py-1.5 rounded-full font-bold text-xs animate-pulse">
               ★ Selected Plan
+            </span>
+          </div>
+        )}
+        {!isSelected?._id === plan._id && highlighted && (
+          <div className="mb-4 inline-flex items-center gap-2 w-fit">
+            <span className="bg-maroon/10 text-maroon px-4 py-1.5 rounded-full font-bold text-xs">
+              Most Popular
             </span>
           </div>
         )}

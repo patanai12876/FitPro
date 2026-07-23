@@ -7,20 +7,86 @@ import PageHeader from '@/components/PageHeader';
 import { FaSearch, FaFilter, FaArrowRight, FaStar } from 'react-icons/fa';
 
 const demoServices = [
-  { _id: '1', name: 'Personal Training Sessions', category: 'strength', description: 'One-on-one training with certified professionals', price: 50, rating: 5 },
-  { _id: '2', name: 'Cardio & HIIT Classes', category: 'cardio', description: 'High-intensity interval training and cardio workouts', price: 20, rating: 4.8 },
-  { _id: '3', name: 'Yoga & Flexibility Training', category: 'flexibility', description: 'Improve flexibility and reduce stress', price: 25, rating: 4.9 },
-  { _id: '4', name: 'Group Fitness Classes', category: 'group classes', description: 'Fun and motivating group workouts', price: 15, rating: 4.7 },
-  { _id: '5', name: 'Recovery & Massage Therapy', category: 'recovery', description: 'Professional massage therapy and recovery sessions', price: 60, rating: 5 },
-  { _id: '6', name: 'Strength Training Program', category: 'strength', description: 'Comprehensive strength training program', price: 45, rating: 4.8 },
+  {
+    _id: 'demo-1',
+    name: 'Stretching & Mobility',
+    description: 'Dedicated sessions to improve mobility, joint health, and prevent injuries.',
+    category: 'flexibility',
+    price: 25,
+    duration: '45 min',
+    image: '/images/services/strength1.jpg',
+    features: ['Dynamic stretching', 'Foam rolling', 'Joint mobility'],
+    rating: 4.8,
+    isActive: true,
+  },
+  {
+    _id: 'demo-2',
+    name: 'CrossFit Training',
+    description: 'Functional fitness training combining weightlifting, gymnastics, and cardio.',
+    category: 'strength',
+    price: 35,
+    duration: '60 min',
+    image: '/images/services/crossfit.webp',
+    features: ['Community workouts', 'Progressive WODs', 'Strength building'],
+    rating: 4.9,
+    isActive: true,
+  },
+  {
+    _id: 'demo-3',
+    name: 'Spin Classes',
+    description: 'Indoor cycling classes with motivating instructors and energetic music.',
+    category: 'cardio',
+    price: 30,
+    duration: '45 min',
+    image: '/images/services/spin.webp',
+    features: ['RPM tracking', 'Interval training', 'Community rides'],
+    rating: 4.9,
+    isActive: true,
+  },
+  {
+    _id: 'demo-4',
+    name: 'Strength Coaching',
+    description: 'Guided strength workouts designed to build power and improve technique.',
+    category: 'strength',
+    price: 40,
+    duration: '60 min',
+    image: '/images/services/pilates.jpg',
+    features: ['Form correction', 'Progress tracking', 'Custom plans'],
+    rating: 4.7,
+    isActive: true,
+  },
+  {
+    _id: 'demo-5',
+    name: 'Recovery Session',
+    description: 'Therapeutic recovery sessions to help your body heal and feel refreshed.',
+    category: 'recovery',
+    price: 28,
+    duration: '50 min',
+    image: '/images/services/stretching.webp',
+    features: ['Foam therapy', 'Relaxation techniques', 'Stretch recovery'],
+    rating: 4.8,
+    isActive: true,
+  },
+  {
+    _id: 'demo-6',
+    name: 'Nutrition Coaching',
+    description: 'Personalized nutrition guidance to support your fitness goals and lifestyle.',
+    category: 'nutrition',
+    price: 32,
+    duration: '45 min',
+    image: '/images/services/strength1.jpg',
+    features: ['Meal planning', 'Macro tracking', 'Supplement advice'],
+    rating: 4.6,
+    isActive: true,
+  },
 ];
 
 export default function ServicesPage() {
-  const [services, setServices] = useState([]);
-  const [filtered, setFiltered] = useState([]);
+  const [services, setServices] = useState(demoServices);
+  const [filtered, setFiltered] = useState(demoServices);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const categories = [
     { name: 'cardio', label: 'Cardio', color: 'from-blue-600 to-blue-700' },
@@ -32,39 +98,8 @@ export default function ServicesPage() {
   ];
 
   useEffect(() => {
-    fetchServices();
-  }, []);
-
-  useEffect(() => {
     filterServices();
   }, [selectedCategory, search, services]);
-
-  const fetchServices = async () => {
-    try {
-      setLoading(true);
-
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/services`
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      const list = (data.data || []).slice(0, 6);
-      setServices(list);
-      setFiltered(list);
-    } catch (error) {
-      console.error('Failed to fetch services:', error);
-      // Fallback to demo data if API fails
-      
-      setServices(demoServices);
-      setFiltered(demoServices);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const filterServices = () => {
     let result = [...services];

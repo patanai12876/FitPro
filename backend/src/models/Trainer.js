@@ -10,7 +10,7 @@ const trainerSchema = new mongoose.Schema({
   },
   certifications: { type: [String], required: true },
   experience: { type: Number, required: true }, // in years
-  photo: { type: String },
+  urlphoto: { type: String },
   bio: { type: String },
   phone: { type: String },
   email: { type: String },
